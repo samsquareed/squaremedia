@@ -1,9 +1,10 @@
 import {Person} from '@material-ui/icons'
+import Topbar from '../../components/topbar/Topbar'
 
 
 const Home = () => {
   return (
-    <div> <Person /> </div>
+    <div> <Topbar /> </div>
   )
 }
 
