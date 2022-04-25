@@ -11,7 +11,15 @@ import {
   School,
 } from "@material-ui/icons";
 
+import CloseFriend from "../closeFriend/CloseFriend"
+
 const Sidebar = () => {
+
+  const user = {
+    profilePicture : './assets/person/4.jpeg',
+    username : "sammed"
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -56,14 +64,12 @@ const Sidebar = () => {
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
-          <li>Sam</li>
+          <CloseFriend user={user} />
+          <CloseFriend user={user} />
+          <CloseFriend user={user} />
+          <CloseFriend user={user} />
+          <CloseFriend user={user} />
+          <CloseFriend user={user} />
         </ul>
       </div>
     </div>
