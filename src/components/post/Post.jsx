@@ -2,6 +2,7 @@ import "./post.css"
 import { MoreVert } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { format } from "timeago.js";
 
 const Post = ({post}) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
@@ -14,16 +15,16 @@ const Post = ({post}) => {
          setUser(res.data)
         }
         fetchedPosts()
-      },[])
+      },[post.userId])
 
   return (
     <div className="post">
         <div className="postWrapper">
             <div className="postTop">
                 <div className="postTopLeft">
-                    <img className="postProfileImg" src={PF+user.profilePicture} alt="" />
+                    <img className="postProfileImg" src={PF+user.profilePicture || PF+"person/noAvatar.png"} alt="" />
                     <span className="postUsername"> {user.username} </span>
-                    <span className="postDate">9 min ago</span>
+                    <span className="postDate"> {format(post.createdAt)} </span>
                 </div>
                 <div className="postTopRight">
                     <MoreVert />
