@@ -4,17 +4,19 @@ import Post from "../post/Post"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-const Feed = () => {
+const Feed = ({username}) => {
 
   const [posts, setPosts] = useState([]);
 
   useEffect(()=>{
     const fetchedPosts = async () =>{
-      const response = await axios.get("http://localhost:5000/api/posts/timeline/all/62678580c44de845dbcf3f62");
+      const response = username ? 
+      await axios.get(`http://localhost:5000/api/posts/profile/`+username)
+      : await axios.get("http://localhost:5000/api/posts/timeline/all/62678580c44de845dbcf3f62");
       setPosts(response.data)
     }
     fetchedPosts()
-  },[])
+  },[username])
 
   return (
     <div className="feed">
