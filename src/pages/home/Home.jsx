@@ -7,7 +7,7 @@ import Topbar from '../../components/topbar/Topbar'
 
 const Home = () => {
   return (
-    <div> 
+    <div className="home"> 
       <Topbar /> 
       <div className="homeContainer">
         <Sidebar />

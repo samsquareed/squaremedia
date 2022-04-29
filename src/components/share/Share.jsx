@@ -17,7 +17,7 @@ const Share = () => {
             <div className="shareOptions">
                 <div className="shareOption">
                     <PermMedia htmlColor="tomato" className="shareIcon"/>
-                    <span className="shareOptionText">Photo or Video</span>
+                    <span className="shareOptionText">Photo</span>
                 </div>
                 <div className="shareOption">
                     <Label htmlColor="blue" className="shareIcon"/>
