@@ -2,7 +2,6 @@ import Online from '../online/Online'
 import './rightbar.css'
 
 const Rightbar = ({user}) => {
-  console.log(user);
   const user1 = {
     profilePicture : './assets/person/4.jpeg',
     username : "sammed"

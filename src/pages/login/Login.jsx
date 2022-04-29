@@ -2,13 +2,16 @@ import "./login.css";
 import {useDispatch} from 'react-redux'
 
 import {signIn} from '../../actions/auth'
+import { useRef } from "react";
 
 const Login = () => {
   const dispatch = useDispatch()
+  const email = useRef("")
+  const password = useRef("")
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    const user = {username : "sammed", password : "12345"}
+    const user = {email : email.current.value  , password: password.current.value }
     // localStorage.setItem("user", JSON.stringify({username : "sammed", password : "12345"}))
     dispatch(signIn(user))
   }
@@ -24,12 +27,12 @@ const Login = () => {
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleSubmit}>
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
+            <input placeholder="Email" ref={email} className="loginInput" />
+            <input placeholder="Password" ref={password} className="loginInput" />
             <button className="loginButton" type="submit" >Log In</button>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
-              Create a New Account
+              Create Account
             </button>
           </form>
         </div>

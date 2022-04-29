@@ -71,10 +71,13 @@
 }
 
 .loginRegisterButton{
-    width: 60%;
+    width: 50%;
     align-self: center;
     height: 50px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background-color: #42b72a;
     color: white;
