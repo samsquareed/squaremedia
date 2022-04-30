@@ -1,9 +1,19 @@
 import { Chat, Notifications, Person, Search } from '@material-ui/icons'
 import React from 'react'
 import "./topbar.css"
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Topbar = () => {
+
+  const nevigate = useNavigate()
+
+  const logout = ()=>{
+    localStorage.clear();
+    nevigate("/login")
+    
+  }
+
+
   return (
     <div className='topbarContainer'>
         <div className='topbarLeft'> 
@@ -20,8 +30,8 @@ const Topbar = () => {
         </div>
         <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Home</span>
-          <span className="topbarLink">Timeline</span>
+          <Link to="/login" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">login</span></Link>
+          <Link to="/register" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">signup</span></Link>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">

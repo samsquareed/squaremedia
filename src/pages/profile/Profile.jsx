@@ -10,16 +10,16 @@ import { useParams } from "react-router"
 const Profile = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   // const photo = "post/3.jpeg"
 
   const [user, setUser] = useState({})
     
   useEffect(()=>{
       const fetchedPosts = async () =>{
-        const res = await axios.get(`http://localhost:5000/api/users?username=${params.username}`)
-        console.log(res);
-        setUser(res.data)
+        // const res = await axios.get(`http://localhost:5000/api/users?username=${params.username}`)
+        // console.log(res);
+        setUser(JSON.parse(localStorage.getItem("user")));
       }
       fetchedPosts()
   },[])
@@ -36,12 +36,12 @@ const Profile = () => {
                 <div className="profileCover">
                 <img
                     className="profileCoverImg"
-                    src={PF+`${user.coverPicture}`}
+                    src={user.coverPicture ? PF+`${user.coverPicture}` : PF+"/person/noCover.png"}
                     alt=""
                 />
                 <img
                     className="profileUserImg"
-                    src={PF+`${user.profilePicture}`}
+                    src={user.profilePicture ? PF+`${user.profilePicture}` : PF+"/person/noAvatar.png" }
                     alt=""
                 />
                 </div>

@@ -1,14 +1,24 @@
 import "./share.css"
 import {PermMedia, Label,Room, EmojiEmotions} from "@material-ui/icons"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Share = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({})
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")));
+  },[])
+
   return (
     <div className="share">
       <div className="shareWrapper">
       <div className="shareTop">
-          <img className="shareProfileImg" src="/assets/person/1.jpeg" alt="" />
+      <Link to={`/profile/${user.username}`}>
+          <img className="shareProfileImg"  src={user.profilePicture ? PF+`${user.profilePicture}` : PF+"/person/noAvatar.png" } alt="" />
+      </Link>    
           <input
-            placeholder="What's in your mind sam?"
+            placeholder="What's in your mind ?"
             className="shareInput"
           />
       </div>

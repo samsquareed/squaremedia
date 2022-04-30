@@ -1,18 +1,19 @@
 import * as api from "../api"
 
-export const signIn = (formData)=> async (dispatch) =>{
+export const signIn = (formData, nevigate)=> async (dispatch) =>{
     try {
         const {data} = await api.SignIn(formData)
         dispatch({type : "LOGIN", payload: data})
+        nevigate("/")
     } catch (error) {
         
     }
 }
 
-export const SignUp = (formData) => async (dispatch) =>{
+export const SignUp = (formData, nevigate) => async (dispatch) =>{
     try {
         const { data } = await api.SignUp(formData)
-        console.log(data);
+        nevigate("/login")
     } catch (error) {
         console.log(error);
     }

@@ -3,17 +3,21 @@ import {useDispatch} from 'react-redux'
 
 import {signIn} from '../../actions/auth'
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch()
   const email = useRef("")
   const password = useRef("")
+  const nevigate = useNavigate()
 
   const handleSubmit = (e)=>{
     e.preventDefault()
     const user = {email : email.current.value  , password: password.current.value }
     // localStorage.setItem("user", JSON.stringify({username : "sammed", password : "12345"}))
-    dispatch(signIn(user))
+    dispatch(signIn(user, nevigate))
+    
+
   }
 
   return (
