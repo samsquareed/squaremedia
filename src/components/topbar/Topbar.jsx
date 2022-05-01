@@ -1,11 +1,18 @@
 import { Chat, Notifications, Person, Search } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./topbar.css"
 import {Link, useNavigate} from 'react-router-dom'
 
 const Topbar = () => {
 
   const nevigate = useNavigate()
+
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")))
+  },[])
 
   const logout = ()=>{
     localStorage.clear();
@@ -30,8 +37,9 @@ const Topbar = () => {
         </div>
         <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to="/login" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">login</span></Link>
-          <Link to="/register" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">signup</span></Link>
+          {!user && <Link to="/login" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">login</span></Link>}
+          {!user && <Link to="/register" style={{textDecoration:"none", color:"white"}}><span className="topbarLink">signup</span></Link>}
+          {user && <Link to="/login" style={{textDecoration:"none", color:"white"}}><span className="topbarLink" onClick={logout}>logout</span></Link>}
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
@@ -47,7 +55,7 @@ const Topbar = () => {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImg"/>
+        <img src={PF+`${user.profilePicture}`} alt="" className="topbarImg"/>
       </div>
     
     </div>
